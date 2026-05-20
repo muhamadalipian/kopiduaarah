@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dua Arah Coffee | Kopi untuk Setiap Pilihan</title>
+    <style>
+        :root {
+            --primary-color: #4A3525;
+            --secondary-color: #3D2A21;
+            --accent-color: #8C6A50;
+            --bg-light: #FAF6F0;
+            --text-dark: #2B1E16;
+            --text-light: #FFFFFF;
+            --cream: #EFE6DD;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 20px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .logo span {
+            font-weight: 300;
+            display: block;
+            font-size: 12px;
+            letter-spacing: 4px;
+            margin-top: -5px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cream);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(43, 30, 22, 0.8), rgba(74, 53, 37, 0.85));
+            color: var(--text-light);
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--accent-color);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: var(--cream);
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            background-color: #A37F65;
+            transform: translateY(-2px);
+        }
+
+        /* Section Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0 auto;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        /* Product Showcase */
+        .product-section {
+            background-color: var(--cream);
+        }
+
+        .product-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        @media (min-width: 768px) {
+            .product-flex {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+
+        .product-info {
+            max-width: 500px;
+        }
+
+        .product-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .product-info h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .ingredients {
+            background: var(--bg-light);
+            padding: 15px;
+            border-left: 4px solid var(--accent-color);
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Form Section */
+        .order-section {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #D0C5BA;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: var(--bg-light);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(140, 106, 80, 0.3);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        footer p {
+            color: var(--cream);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                dua arah
+                <span>COFFEE</span>
+            </div>
+            <nav>
+                <a href="#keunggulan">Keunggulan</a>
+                <a href="#menu">Menu</a>
+                <a href="#pesan">Pesan</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>dua arah COFFEE</h1>
+        <p>"Kopi untuk setiap pilihan, ke mana pun arahmu."</p>
+        <a href="#pesan" class="btn-main">Pesan Sekarang</a>
+    </section>
+
+    <section id="keunggulan" class="container">
+        <h2 class="section-title">Kenapa Dua Arah Coffee?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌾</div>
+                <h3>Biji Berkualitas</h3>
+                <p>Dipilih dari petani lokal terbaik untuk menghasilkan cita rasa kopi yang otentik dan seimbang.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">❄️</div>
+                <h3>Disediakan Dingin</h3>
+                <p>Nikmat disajikan dingin, kapan pun. Menjaga kesegaran kopi susu di setiap aktivitas Anda.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🍼</div>
+                <h3>Praktis &amp; Siap Minum</h3>
+                <p>Teman perjalananmu, ke mana pun arahmu. Dikemas higienis dan mudah dibawa ke mana saja.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="product-section">
+        <div class="container">
+            <h2 class="section-title">Menu Utama</h2>
+            <div class="product-flex">
+                <div style="background: var(--primary-color); width: 220px; height: 320px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; font-weight: bold; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                    [ Botol 250ml ]<br><br>Dua Arah Coffee<br>Kopi Susu
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Rasa Seimbang</span>
+                    <h3>Kopi Susu Gula Aren (250 ml)</h3>
+                    <p>Perpaduan rasa kopi pilihan berpadu dengan kelembutan susu segar dan manisnya gula aren alami.</p>
+                    
+                    <div class="ingredients">
+                        <strong>Komposisi:</strong><br>
+                        Susu Segar, Kopi, Gula Aren.
+                    </div>
+                    
+                    <p style="font-size: 14px; color: #665544; font-style: italic; margin-bottom: 20px;">
+                        *Kocok dahulu sebelum diminum. Simpan di lemari es (2-4°C).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pesan" class="container">
+        <h2 class="section-title">Formulir Pemesanan</h2>
+        <div class="order-section">
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="produk">Pilih Produk</label>
+                    <select id="produk" required>
+                        <option value="Kopi Susu Gula Aren 250ml">Kopi Susu Gula Aren (250 ml)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah">Jumlah Botol</label>
+                    <input type="number" id="jumlah" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat Pengiriman</label>
+                    <textarea id="alamat" rows="3" placeholder="Alamat lengkap pengiriman..." required></textarea>
+                </div>
+                
+                <button type="button" onclick="kirimOrder()" class="btn-main" style="width: 100%; border-radius: 8px;">
+                    Kirim Pesanan via WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Dua Arah Coffee. All Rights Reserved.</p>
+        <p style="font-size: 12px; margin-top: 5px;">#KOPIDUAARAH — dua arah, banyak tujuan.</p>
+    </footer>
+
+    <script>
+        function kirimOrder() {
+            // PENTING: Ganti nomor di bawah dengan nomor WhatsApp bisnis Anda (gunakan kode negara 62)
+            var nomorWA = "6288210129982"; 
+            
+            var nama = document.getElementById('nama').value;
+            var produk = document.getElementById('produk').value;
+            var jumlah = document.getElementById('jumlah').value;
+            var alamat = document.getElementById('alamat').value;
+
+            if(!nama || !alamat) {
+                alert('Silakan lengkapi Nama dan Alamat Anda terlebih dahulu.');
+                return;
+            }
+
+            // Menyusun format teks pesanan rapi untuk WhatsApp
+            var teks = "Halo Dua Arah Coffee, saya ingin memesan:%0A%0A" +
+                       "*Nama:* " + encodeURIComponent(nama) + "%0A" +
+                       "*Produk:* " + encodeURIComponent(produk) + "%0A" +
+                       "*Jumlah:* " + encodeURIComponent(jumlah) + " Botol%0A" +
+                       "*Alamat:* " + encodeURIComponent(alamat) + "%0A%0A" +
+                       "Mohon segera diproses ya, terima kasih!";
+
+            var urlWA = "https://wa.me/" + nomorWA + "?text=" + teks;
+            window.open(urlWA, '_blank');
+        }
+    </script>
+</body>
+</html>
